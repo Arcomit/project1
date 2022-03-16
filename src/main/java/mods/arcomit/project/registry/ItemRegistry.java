@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 /**
  * @Author Arcomit
- * @Update 2022/03/12-Arcomit
+ * @Update 2022/03/16-Arcomit
  */
 public class ItemRegistry {
     //物品注册用的

@@ -19,26 +19,29 @@ import java.util.UUID;
  */
 public class SwordChangeItem extends SwordItem {
     private final float attackDamage;
+    private final float attackReach;
     public final Multimap<Attribute, AttributeModifier> defaultModifiers;
-    protected static final UUID BASE_ATTACK_REACH_UUID = UUID.fromString("9E973CDE-CDDD-4D07-9050-F29D432D4A62");
     //用于修改原版的剑
     public SwordChangeItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, float pAttackReachModifier , Item.Properties pProperties){
         super(pTier,pAttackDamageModifier,pAttackSpeedModifier,pProperties);
         attackDamage = pAttackDamageModifier;
+        attackReach = pAttackReachModifier;
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         //伤害
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", pAttackDamageModifier, AttributeModifier.Operation.ADDITION));
         //攻击速度
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
         // 攻击距离
-        builder.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(BASE_ATTACK_REACH_UUID, "Weapon modifier", pAttackReachModifier, AttributeModifier.Operation.ADDITION));
-
         this.defaultModifiers = builder.build();
     }
     //修改伤害用的
     @Override
     public float getDamage() {
         return this.attackDamage;
+    }
+
+    public float getReach() {
+        return this.attackReach;
     }
 
     //修改属性用的

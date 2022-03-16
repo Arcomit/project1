@@ -10,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -23,6 +24,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -41,6 +43,8 @@ import static net.minecraft.world.item.ItemStack.ATTRIBUTE_MODIFIER_FORMAT;
  */
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class Combat {
+    protected static final UUID BASE_ATTACK_REACH_UUID = UUID.fromString("9E973CDE-CDDD-4D07-9050-F29D432D4A62");
+
     //原版剑类攻击生物时,生物的无敌帧只有1Tick
     @SubscribeEvent
     public static void damageEntity(LivingDamageEvent event){
@@ -60,6 +64,7 @@ public class Combat {
         if (world.isClientSide){
             BlockPos pos = event.getPos();
             BlockState clickBlock = event.getWorld().getBlockState(pos);
+            //判断方块
             if (clickBlock.getCollisionShape(world,pos).isEmpty()){
                 Player player = event.getPlayer();
                 double reach = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
@@ -72,6 +77,19 @@ public class Combat {
                 if (result != null) {
                     event.setCanceled(true);
                     Minecraft.getInstance().gameMode.attack(player, result.getEntity());
+                }
+            }
+        }
+    }
+
+    //修改攻击距离
+    @SubscribeEvent
+    public static void changeReachDistance(ItemAttributeModifierEvent event){
+        if (event.getItemStack() != null){
+            if (event.getItemStack().getItem() instanceof SwordChangeItem){
+                SwordChangeItem item = (SwordChangeItem) event.getItemStack().getItem();
+                if (event.getSlotType().equals(EquipmentSlot.MAINHAND)){
+                    event.addModifier(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(BASE_ATTACK_REACH_UUID, "Weapon modifier", item.getReach(), AttributeModifier.Operation.ADDITION));
                 }
             }
         }

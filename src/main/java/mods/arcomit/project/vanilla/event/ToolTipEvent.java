@@ -1,5 +1,6 @@
 package mods.arcomit.project.vanilla.event;
 
+import mods.arcomit.project.Project1;
 import mods.arcomit.project.vanilla.item.SwordChangeItem;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
  * @Author Arcomit
  * @Update 2022/03/16-Arcomit
  */
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = Project1.MODID)
 public class ToolTipEvent {
     //修改工具Tip
     @SubscribeEvent

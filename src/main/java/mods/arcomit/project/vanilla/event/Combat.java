@@ -41,15 +41,16 @@ import static net.minecraft.world.item.ItemStack.ATTRIBUTE_MODIFIER_FORMAT;
  */
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class Combat {
-    //原版剑类攻击生物时,生物的无敌帧只有1
+    //原版剑类攻击生物时,生物的无敌帧只有1Tick
     @SubscribeEvent
     public static void damageEntity(LivingDamageEvent event){
         if (event.getSource().getEntity() instanceof Player){
             Player player = (Player) event.getSource().getEntity();
             if (player.getMainHandItem().getItem() instanceof SwordChangeItem){
-                event.getEntityLiving().invulnerableTime = 0;
+                event.getEntityLiving().invulnerableTime = 1;
             }
         }
+        /**需要写配置文件用于设置是否开启无敌帧(默认不开启)*/
     }
 
     //穿草攻击
@@ -73,7 +74,6 @@ public class Combat {
                     Minecraft.getInstance().gameMode.attack(player, result.getEntity());
                 }
             }
-
         }
     }
 

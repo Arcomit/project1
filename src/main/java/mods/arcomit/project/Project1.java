@@ -15,8 +15,6 @@ import software.bernie.geckolib3.GeckoLib;
 public class Project1 {
     public static final String MODID = "project1";
 
-
-
     public Project1(){
         //Geckolib动画库初始化
         GeckoLib.initialize();

@@ -1,4 +1,4 @@
-package mods.arcomit.project.event;
+package mods.arcomit.project.vanilla.event;
 
 import mods.arcomit.project.vanilla.item.SwordChangeItem;
 import net.minecraft.network.chat.TranslatableComponent;

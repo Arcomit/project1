@@ -34,6 +34,11 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
+/**
+ * @Author Arcomit
+ * @Update 2022/03/16-Arcomit
+ * 目前仅用于使REACH_DISTANCE属性在攻击距离中可用
+ */
 @Mixin(ServerGamePacketListenerImpl.class)
 public abstract class MixinServerGamePacketListenerImpl {
     @Shadow

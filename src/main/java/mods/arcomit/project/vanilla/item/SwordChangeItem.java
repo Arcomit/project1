@@ -17,6 +17,7 @@ import java.util.UUID;
 /**
  * @Author Arcomit
  * @Update 2022/03/16-Arcomit
+ * 修改后的剑
  */
 public class SwordChangeItem extends SwordItem {
     private final float attackDamage;

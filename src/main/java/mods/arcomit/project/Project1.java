@@ -1,7 +1,9 @@
 package mods.arcomit.project;
 
 import mods.arcomit.project.registry.ItemRegistry;
-import mods.arcomit.project.vanilla.item.ChangeItemVanilla;
+import mods.arcomit.project.vanilla.attributes.register.ChangeAttributesVanilla;
+import mods.arcomit.project.vanilla.entity.register.ChangeEntityVanilla;
+import mods.arcomit.project.vanilla.item.register.ChangeItemVanilla;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -22,6 +24,11 @@ public class Project1 {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         //将用于替换原版物品的VANILLA_ITEMS注册进MOD总线
         ChangeItemVanilla.VANILLA_ITEMS.register(bus);
+        //将用于替换原版实体的VANILLA_ENTITYS注册进MOD总线
+        ChangeEntityVanilla.VANILLA_ENTITYS.register(bus);
+        //将用于替换原版属性的VANILLA_ATTRIBUTES注册进MOD总线
+        ChangeAttributesVanilla.VANILLA_ATTRIBUTES.register(bus);
+
         //将用于添加模组物品的ITEMS注册进MOD总线
         ItemRegistry.ITEMS.register(bus);
     }

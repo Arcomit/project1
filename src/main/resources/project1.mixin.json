@@ -6,7 +6,8 @@
   "refmap": "",
   "mixins": [],
   "client": [
-    "MixinServerGamePacketListenerImpl"
+    "MixinServerGamePacketListenerImpl",
+    "MixinLivingEntity"
   ],
   "server": [],
   "minVersion": "0.8"

@@ -30,12 +30,14 @@ import java.util.function.Predicate;
 /**
  * @Author Arcomit
  * @Update 2022/03/17-Arcomit
+ * 修改世界出生地的事件
  */
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class SpawnEvent {
 
+    //固定玩家在哪个生物群系出生
     @SubscribeEvent
-    public static void onWorldLoad(WorldEvent.CreateSpawnPosition e) {
+    public static void worldLoad(WorldEvent.CreateSpawnPosition e) {
         if (e.getWorld() instanceof ServerLevel){
             e.setCanceled(true);
             ServerLevel world = (ServerLevel) e.getWorld();
@@ -46,13 +48,9 @@ public class SpawnEvent {
             BlockPos pos = new BlockPos(0,0,0);
 
             //用于判断生物群系
-            Predicate<Holder<Biome>> biomeResult = new Predicate<Holder<Biome>>() {
-                @Override
-                public boolean test(Holder<Biome> biomeHolder) {
-                    return biomeHolder.is(Biomes.JUNGLE);
-                }
-            };
-            Pair<BlockPos, Holder<Biome>> pair = world.findNearestBiome(biomeResult, pos, 6400, 8);
+            Predicate<Holder<Biome>> biomeResult = biomeHolder -> biomeHolder.is(Biomes.FOREST);
+
+            Pair<BlockPos, Holder<Biome>> pair = world.findNearestBiome(biomeResult, pos, 99999, 8);
             ChunkPos chunkpos = world.getChunk(pair.getFirst()).getPos();
             int i = chunkgenerator.getSpawnHeight(world);
             if (i < world.getMinBuildHeight()) {

@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 /**
  * @Author Arcomit
  * @Update 2022/03/16-Arcomit
+ * 修改工具tip
  */
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class ToolTipEvent {
@@ -22,8 +23,11 @@ public class ToolTipEvent {
             String tip;
             for(int x = 0;x < event.getToolTip().size();x++){
                 tip = event.getToolTip().get(x).getString();
-                if(tip.contains(new TranslatableComponent(Attributes.ATTACK_SPEED.getDescriptionId()).getString())
-                        || tip.contains(new TranslatableComponent("attribute.name.generic.reach_distance").getString()))   {
+
+                if(tip.contains(new TranslatableComponent("attribute.name.generic.attack_speed").getString())
+                        || tip.contains(new TranslatableComponent("generic.attack_speed").getString())
+                        || tip.contains(new TranslatableComponent("attribute.name.generic.reach_distance").getString())
+                        || tip.contains(new TranslatableComponent("generic.reachDistance").getString()) )   {
                     //移除原版剑类的攻击速度与距离的Tip
                     event.getToolTip().remove(x);
                 }

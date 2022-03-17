@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "setSourceFile": true,
+  "package": "mods.arcomit.project.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "",
+  "mixins": [],
+  "client": [
+    "MixinServerGamePacketListenerImpl"
+  ],
+  "server": [],
+  "minVersion": "0.8"
+}

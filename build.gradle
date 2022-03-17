@@ -53,6 +53,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
+            arg "-mixin.config=project1.mixin.json"
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.

@@ -4,6 +4,7 @@ import mods.arcomit.project.Project1;
 import mods.arcomit.project.vanilla.item.SwordChangeItem;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,11 +19,13 @@ public class ToolTipEvent {
     @SubscribeEvent
     public static void toolTip(ItemTooltipEvent event){
         if (event.getItemStack().getItem() instanceof SwordChangeItem){
+            String tip;
             for(int x = 0;x < event.getToolTip().size();x++){
-                if(event.getToolTip().get(x).getString().contains(new TranslatableComponent(Attributes.ATTACK_SPEED.getDescriptionId()).getString())){
-                    //移除原版剑类的攻击速度显示Tip
+                tip = event.getToolTip().get(x).getString();
+                if(tip.contains(new TranslatableComponent(Attributes.ATTACK_SPEED.getDescriptionId()).getString())
+                        || tip.contains(new TranslatableComponent("attribute.name.generic.reach_distance").getString()))   {
+                    //移除原版剑类的攻击速度与距离的Tip
                     event.getToolTip().remove(x);
-                    return;
                 }
             }
         }

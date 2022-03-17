@@ -64,9 +64,10 @@ public class Combat {
         if (world.isClientSide){
             BlockPos pos = event.getPos();
             BlockState clickBlock = event.getWorld().getBlockState(pos);
-            //判断方块
+            //判断方块是否可以穿过
             if (clickBlock.getCollisionShape(world,pos).isEmpty()){
                 Player player = event.getPlayer();
+                //取距离
                 double reach = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
                 reach = player.isCreative() ? reach : reach - 0.5F;
                 Vec3 startVec = player.getEyePosition(1.0F);
@@ -82,7 +83,7 @@ public class Combat {
         }
     }
 
-    //修改攻击距离
+    //修改攻击与选择距离
     @SubscribeEvent
     public static void changeReachDistance(ItemAttributeModifierEvent event){
         if (event.getItemStack() != null){

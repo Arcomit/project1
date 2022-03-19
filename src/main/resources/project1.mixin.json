@@ -4,11 +4,15 @@
   "package": "mods.arcomit.project.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "",
-  "mixins": [],
-  "client": [
-    "MixinServerGamePacketListenerImpl",
-    "MixinLivingEntity"
+  "mixins": [
+    "MixinLivingEntity",
+    "MixinRangedAttribute"
   ],
-  "server": [],
+  "client": [
+    "MixinEntityRenderDispatcher"
+  ],
+  "server": [
+    "MixinServerGamePacketListenerImpl"
+  ],
   "minVersion": "0.8"
 }

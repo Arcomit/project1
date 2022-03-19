@@ -1,13 +1,21 @@
 package mods.arcomit.project.vanilla.item.register;
 
 import mods.arcomit.project.vanilla.item.SwordChangeItem;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.Squid;
+import net.minecraft.world.entity.animal.Turtle;
+import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tiers;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.Random;
 
 /**
  * @Author Arcomit
@@ -25,9 +33,9 @@ public class ChangeItemVanilla {
     //石剑
     public static final RegistryObject<Item> STONE_SWORD = VANILLA_ITEMS.register("stone_sword", () -> new SwordChangeItem(Tiers.STONE, 1, 96,-1.5f, (new Item.Properties()).durability(350).tab(CreativeModeTab.TAB_COMBAT)));
     //铁剑
-    public static final RegistryObject<Item> IRON_SWORD = VANILLA_ITEMS.register("iron_sword", () -> new SwordChangeItem(Tiers.IRON, 1, 96,-1.5f, (new Item.Properties()).durability(750).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> IRON_SWORD = VANILLA_ITEMS.register("iron_sword", () -> new SwordChangeItem(Tiers.IRON, 1, 96,-1f, (new Item.Properties()).durability(750).tab(CreativeModeTab.TAB_COMBAT)));
     //钻石剑
-    public static final RegistryObject<Item> DIAMOND_SWORD = VANILLA_ITEMS.register("diamond_sword", () -> new SwordChangeItem(Tiers.DIAMOND, 2, 96,-1f, (new Item.Properties()).durability(2430).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> DIAMOND_SWORD = VANILLA_ITEMS.register("diamond_sword", () -> new SwordChangeItem(Tiers.DIAMOND, 2, 96,0, (new Item.Properties()).durability(2430).tab(CreativeModeTab.TAB_COMBAT)));
     //下届剑
-    public static final RegistryObject<Item> NETHERITE_SWORD = VANILLA_ITEMS.register("netherite_sword", () -> new SwordChangeItem(Tiers.NETHERITE, 3, 96,0, (new Item.Properties()).durability(2710).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> NETHERITE_SWORD = VANILLA_ITEMS.register("netherite_sword", () -> new SwordChangeItem(Tiers.NETHERITE, 3, 96,1, (new Item.Properties()).durability(2710).tab(CreativeModeTab.TAB_COMBAT)));
 }

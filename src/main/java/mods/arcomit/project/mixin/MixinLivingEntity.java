@@ -32,7 +32,7 @@ public abstract class MixinLivingEntity {
     protected float getDamageAfterArmorAbsorb(DamageSource pSource, float pDamage) {
         if (!pSource.isBypassArmor()) {
             this.hurtArmor(pSource, pDamage);
-            pDamage = pDamage - (float)this.getArmorValue();
+            pDamage = pDamage - ((float)this.getArmorValue());
         }
         return pDamage;
     }

@@ -17,6 +17,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -46,6 +47,7 @@ import static net.minecraft.world.item.ItemStack.ATTRIBUTE_MODIFIER_FORMAT;
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class Combat {
     protected static final UUID BASE_ATTACK_REACH_UUID = UUID.fromString("9E973CDE-CDDD-4D07-9050-F29D432D4A62");
+    protected static final UUID BASE_ATTACK_UUID = UUID.fromString("805C7528-03CD-4645-AC61-98485987871F");
 
     //原版剑类攻击生物时,生物的无敌帧只有1Tick
     @SubscribeEvent

@@ -17,7 +17,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
  */
 public class PlayerRender extends ReplacedEntityRenderer{
     public PlayerRender(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new PlayerModel(), new PlayerController());
+        super(renderManager, new PlayerModel(), new PlayerController(null));
     }
 
     //用于获取玩家模型格式
@@ -26,7 +26,7 @@ public class PlayerRender extends ReplacedEntityRenderer{
         if (instance instanceof AbstractClientPlayer){
             AbstractClientPlayer player = ((AbstractClientPlayer) instance);
             if (player.getModelName().equals("slim")){
-                return new ResourceLocation(Project1.MODID, "model/player_slim.geo.json");
+                return new ResourceLocation(Project1.MODID, "geo/player_slim.geo.json");
             }
         }
         return getGeoModelProvider().getModelLocation(instance);

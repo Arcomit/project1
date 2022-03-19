@@ -1,10 +1,16 @@
 package mods.arcomit.project;
 
+import mods.arcomit.project.animation.event.PlayerRenderEvent;
 import mods.arcomit.project.registry.ItemRegistry;
 import mods.arcomit.project.vanilla.entity.register.ChangeEntityVanilla;
 import mods.arcomit.project.vanilla.item.register.ChangeItemVanilla;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
 
@@ -21,6 +27,7 @@ public class Project1 {
         GeckoLib.initialize();
         //MOD总线
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
         //将用于替换原版物品的VANILLA_ITEMS注册进MOD总线
         ChangeItemVanilla.VANILLA_ITEMS.register(bus);
         //将用于替换原版实体的VANILLA_ENTITYS注册进MOD总线

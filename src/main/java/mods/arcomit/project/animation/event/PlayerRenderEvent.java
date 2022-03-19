@@ -1,6 +1,7 @@
 package mods.arcomit.project.animation.event;
 
 import mods.arcomit.project.Project1;
+import mods.arcomit.project.animation.controller.entity.PlayerController;
 import mods.arcomit.project.animation.render.PlayerRender;
 import mods.arcomit.project.IMixinEntityRenderDispatcher;
 import net.minecraft.client.Minecraft;
@@ -11,31 +12,58 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author Arcomit
  * @Update 2022/03/19-Arcomit
- * 用与修改LivingEntity类
+ * 用与修改玩家渲染类
  */
 public class PlayerRenderEvent {
     public static IMixinEntityRenderDispatcher entityRenderDispatcher = (IMixinEntityRenderDispatcher) Minecraft.getInstance().getEntityRenderDispatcher();
 
     private static PlayerRender playerRender = new PlayerRender(entityRenderDispatcher.getContext());
+    //用于储存玩家的动画控制器
+    private static ConcurrentHashMap<UUID, PlayerController> playerControllerHashMap = new ConcurrentHashMap(20);
 
-    @OnlyIn(Dist.CLIENT)
+
     @SubscribeEvent
     public static void renderPlayer(RenderPlayerEvent.Pre event){
+        //取消玩家渲染
         event.setCanceled(true);
 
         if (event.getPlayer() instanceof AbstractClientPlayer){
             AbstractClientPlayer player = (AbstractClientPlayer) event.getPlayer();
 
             float yaw = Mth.lerp(event.getPartialTick(), player.yRotO, event.getPlayer().getYRot());
-
-            playerRender.render(player,yaw,event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+            //换成我们的玩家渲染
+            playerRender.render(player,playerControllerHashMap.get(player.getUUID()),yaw,event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
         }
 
     }
+
+    @SubscribeEvent
+    public static void playerJoinWorld(EntityJoinWorldEvent event) {
+        if (event.getEntity() instanceof AbstractClientPlayer){
+            AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
+            //玩家进入游戏时创建或更新HashMap中的动画控制器
+            playerControllerHashMap.put(player.getUUID(),new PlayerController(player));
+        }
+    }
+
+    @SubscribeEvent
+    public static void playerClone(PlayerEvent.Clone event){
+        if (event.getEntity() instanceof AbstractClientPlayer && event.isWasDeath()){
+            AbstractClientPlayer player = (AbstractClientPlayer) event.getEntity();
+            //玩家重生时创建或更新HashMap中的动画控制器
+            playerControllerHashMap.put(player.getUUID(),new PlayerController(player));
+        }
+    }
+
 }

@@ -6,13 +6,13 @@
   "refmap": "",
   "mixins": [
     "MixinLivingEntity",
-    "MixinRangedAttribute"
+    "MixinRangedAttribute",
+
+    "MixinServerGamePacketListenerImpl"
   ],
   "client": [
     "MixinEntityRenderDispatcher"
   ],
-  "server": [
-    "MixinServerGamePacketListenerImpl"
-  ],
+  "server": [],
   "minVersion": "0.8"
 }

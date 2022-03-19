@@ -16,7 +16,7 @@ public class PlayerModel extends AnimatedGeoModel {
     //默认史蒂夫模型格式
     @Override
     public ResourceLocation getModelLocation(Object object) {
-        return new ResourceLocation(Project1.MODID, "models/player.geo.json");
+        return new ResourceLocation(Project1.MODID, "geo/player.geo.json");
     }
 
     //默认史蒂夫

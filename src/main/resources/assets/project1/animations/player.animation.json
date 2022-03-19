@@ -31,23 +31,40 @@
 			"loop": true,
 			"animation_length": 1,
 			"bones": {
+				"BodyDown": {
+					"rotation": {
+						"0.0": [-95, 0, 0],
+						"1.0": [0, 0, 0]
+					}
+				},
+				"LeftLowerLeg": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.0": [87.5, 0, 0]
+					}
+				},
+				"RighyLowerLeg": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.0": [95, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.player.fc": {
+			"loop": true,
+			"animation_length": 1,
+			"bones": {
 				"RightArm": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.5": [0, 0, 95]
+						"1.0": [-384.43043, -53.58541, 2114.29271]
 					}
 				},
-				"RightLowerArm": {
-					"rotation": {
-						"0.5": [0, 0, 0],
-						"1.0": [-95, 0, 0]
-					}
-				},
-				"RightBone": {
+				"LeftArm": {
 					"rotation": {
 						"0.0": [0, 0, 0],
-						"0.5": [0, 0, 0],
-						"1.0": [-367.5, 0, 0]
+						"1.0": [-1611.37189, -25.84286, 1368.95653]
 					}
 				}
 			}

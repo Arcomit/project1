@@ -9,7 +9,7 @@ import java.util.List;
 public class ReplacedAnimationEvent extends AnimationEvent {
     private final Entity entity;
 
-    public ReplacedAnimationEvent( Entity entity, IAnimatable animatable, float limbSwing, float limbSwingAmount, float partialTick, boolean isMoving, List extraData) {
+    public ReplacedAnimationEvent(Entity entity, IAnimatable animatable, float limbSwing, float limbSwingAmount, float partialTick, boolean isMoving, List extraData) {
         super(animatable, limbSwing, limbSwingAmount, partialTick, isMoving, extraData);
         this.entity = entity;
     }

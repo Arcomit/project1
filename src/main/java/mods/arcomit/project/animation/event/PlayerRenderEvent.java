@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.Mod;
  * @Update 2022/03/19-Arcomit
  * 用与修改LivingEntity类
  */
-@Mod.EventBusSubscriber(modid = Project1.MODID)
 public class PlayerRenderEvent {
     public static IMixinEntityRenderDispatcher entityRenderDispatcher = (IMixinEntityRenderDispatcher) Minecraft.getInstance().getEntityRenderDispatcher();
 

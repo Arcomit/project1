@@ -1,9 +1,11 @@
 package mods.arcomit.project;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import mods.arcomit.project.animation.event.PlayerRenderEvent;
 import mods.arcomit.project.registry.ItemRegistry;
 import mods.arcomit.project.vanilla.entity.register.ChangeEntityVanilla;
 import mods.arcomit.project.vanilla.item.register.ChangeItemVanilla;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +27,7 @@ public class Project1 {
     public Project1(){
         //Geckolib动画库初始化
         GeckoLib.initialize();
+
         //MOD总线
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 

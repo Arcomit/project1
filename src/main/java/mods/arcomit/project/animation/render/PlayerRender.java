@@ -2,13 +2,11 @@ package mods.arcomit.project.animation.render;
 
 import mods.arcomit.project.Project1;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
-import mods.arcomit.project.animation.model.PlayerModel;
+import mods.arcomit.project.animation.event.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 /**
  * @Author Arcomit

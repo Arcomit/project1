@@ -4,6 +4,7 @@ import mods.arcomit.project.Project1;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
 import mods.arcomit.project.animation.render.PlayerRender;
 import mods.arcomit.project.IMixinEntityRenderDispatcher;
+import mods.arcomit.project.mixin.MixinEntityRenderDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -44,6 +45,7 @@ public class PlayerRenderEvent {
             float yaw = Mth.lerp(event.getPartialTick(), player.yRotO, event.getPlayer().getYRot());
             //换成我们的玩家渲染
             playerRender.render(player,playerControllerHashMap.get(player.getUUID()),yaw,event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+
         }
 
     }

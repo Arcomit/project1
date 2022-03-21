@@ -32,7 +32,7 @@ public class PlayerController implements IAnimatable {
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
 
         if (player.isCrouching()){
-            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.TG", true));
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.new", true));
         }else {
             event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.swinging", true));
         }

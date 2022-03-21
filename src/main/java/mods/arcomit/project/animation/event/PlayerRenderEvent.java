@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author Arcomit
- * @Update 2022/03/19-Arcomit
+ * @Update 2022/03/20-Arcomit
  * 用与修改玩家渲染类
  */
 public class PlayerRenderEvent {

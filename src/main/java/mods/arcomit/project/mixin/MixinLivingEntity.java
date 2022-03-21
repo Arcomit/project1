@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.gen.Accessor;
 
 /**
  * @Author Arcomit
@@ -21,8 +22,7 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class MixinLivingEntity {
 
     @Shadow
-    protected void hurtArmor(DamageSource pDamageSource, float pDamage) {
-    }
+    protected void hurtArmor(DamageSource pDamageSource, float pDamage) {}
 
     @Shadow
     public abstract int getArmorValue();

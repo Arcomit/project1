@@ -148,7 +148,7 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
         entityModelData.headPitch = -f6;
         entityModelData.netHeadYaw = -f2;
 
-        GeoModel model = modelProvider.getModel(this.getModelLocation(animatable));
+        GeoModel model = modelProvider.getModel(this.getModelLocation(entity));
         ReplacedAnimationEvent predicate = new ReplacedAnimationEvent(entity,animatable, limbSwing, limbSwingAmount, partialTicks,
                 !(limbSwingAmount > -0.15F && limbSwingAmount < 0.15F), Collections.singletonList(entityModelData));
         if (modelProvider instanceof IAnimatableModel) {
@@ -289,6 +289,10 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
     @Override
     public ResourceLocation getTextureLocation(Object instance) {
         return this.modelProvider.getTextureLocation((IAnimatable) instance);
+    }
+
+    public ResourceLocation getModelLocation(Entity entity) {
+        return getModelLocation(animatable);
     }
 
     public ResourceLocation getModelLocation(Object instance) {

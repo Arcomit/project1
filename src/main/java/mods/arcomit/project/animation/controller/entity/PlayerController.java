@@ -26,13 +26,13 @@ public class PlayerController implements IAnimatable {
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 4, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controller", 2, this::predicate));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
 
         if (player.isCrouching()){
-            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.new", true));
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.TG", true));
         }else {
             event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.fc", true));
         }

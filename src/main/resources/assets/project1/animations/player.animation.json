@@ -68,6 +68,71 @@
 					}
 				}
 			}
+		},
+		"animation.player.TG": {
+			"loop": true,
+			"animation_length": 7,
+			"bones": {
+				"Head": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.0": {
+							"vector": [-2635.20092, -70.43117, 2094.21725]
+						},
+						"4.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"LeftArm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"4.5": {
+							"vector": [110, 0, 0]
+						},
+						"7.0": {
+							"vector": [-1843.94293, -3.26642, 2371.4565]
+						}
+					}
+				},
+				"BodyDown": {
+					"rotation": {
+						"vector": [-85, 0, 0]
+					}
+				},
+				"LeftLeg": {
+					"rotation": {
+						"0.0": {
+							"vector": [100, 0, 0]
+						},
+						"1.0": {
+							"vector": [5, 0, 0]
+						},
+						"4.5": {
+							"vector": [-67.5, 0, 0]
+						}
+					}
+				},
+				"RightLeg": {
+					"rotation": {
+						"0.0": {
+							"vector": [-45, 0, 0]
+						},
+						"2.5": {
+							"vector": [137.5, 0, 0]
+						}
+					}
+				},
+				"RighyLowerLeg": {
+					"rotation": {
+						"vector": [65, 0, 0]
+					}
+				}
+			}
 		}
 	},
 	"geckolib_format_version": 2

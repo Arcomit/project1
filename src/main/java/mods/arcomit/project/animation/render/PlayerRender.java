@@ -5,6 +5,7 @@ import mods.arcomit.project.animation.controller.entity.PlayerController;
 import mods.arcomit.project.animation.event.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
@@ -20,14 +21,14 @@ public class PlayerRender extends ReplacedEntityRenderer{
 
     //用于获取玩家模型格式
     @Override
-    public ResourceLocation getModelLocation(Object instance) {
-        if (instance instanceof AbstractClientPlayer){
-            AbstractClientPlayer player = ((AbstractClientPlayer) instance);
+    public ResourceLocation getModelLocation(Entity entity) {
+        if (entity instanceof AbstractClientPlayer){
+            AbstractClientPlayer player = ((AbstractClientPlayer) entity);
             if (player.getModelName().equals("slim")){
                 return new ResourceLocation(Project1.MODID, "geo/player_slim.geo.json");
             }
         }
-        return getGeoModelProvider().getModelLocation(instance);
+        return super.getModelLocation(entity);
     }
 
     //用于获取玩家皮肤

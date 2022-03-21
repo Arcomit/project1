@@ -1,18 +1,10 @@
 package mods.arcomit.project;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
-import mods.arcomit.project.animation.event.PlayerRenderEvent;
 import mods.arcomit.project.registry.ItemRegistry;
 import mods.arcomit.project.vanilla.entity.register.ChangeEntityVanilla;
 import mods.arcomit.project.vanilla.item.register.ChangeItemVanilla;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
 

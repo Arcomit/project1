@@ -1,4 +1,4 @@
-package mods.arcomit.project.animation.event.model;
+package mods.arcomit.project.client.model;
 
 import mods.arcomit.project.Project1;
 import net.minecraft.client.Minecraft;
@@ -9,7 +9,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 /**
  * @Author Arcomit
  * @Update 2022/03/19-Arcomit
- * 用于获取模型贴图动作文件等
+ * 玩家模型,用于获取模型贴图动作文件等
  */
 @SuppressWarnings("rawtypes")
 public class PlayerModel extends AnimatedGeoModel {

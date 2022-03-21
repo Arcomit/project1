@@ -1,22 +1,15 @@
-package mods.arcomit.project.animation.event;
+package mods.arcomit.project.event;
 
-import mods.arcomit.project.Project1;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
-import mods.arcomit.project.animation.render.PlayerRender;
+import mods.arcomit.project.client.render.PlayerRender;
 import mods.arcomit.project.IMixinEntityRenderDispatcher;
-import mods.arcomit.project.mixin.MixinEntityRenderDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;

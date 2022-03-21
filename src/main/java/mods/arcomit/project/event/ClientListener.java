@@ -1,7 +1,6 @@
 package mods.arcomit.project.event;
 
 import mods.arcomit.project.Project1;
-import mods.arcomit.project.animation.event.PlayerRenderEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;

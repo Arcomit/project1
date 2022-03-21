@@ -34,7 +34,7 @@ public class PlayerController implements IAnimatable {
         if (player.isCrouching()){
             event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.TG", true));
         }else {
-            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.fc", true));
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.swinging", true));
         }
         return PlayState.CONTINUE;
     }

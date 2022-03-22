@@ -27,7 +27,10 @@ public abstract class MixinLivingEntity {
     @Shadow
     public abstract int getArmorValue();
 
-    //修改护甲减伤机制为1:1减伤
+    /**
+     * @author  Arcomit
+     * 修改护甲减伤机制为1:1减伤
+     */
     @Overwrite
     protected float getDamageAfterArmorAbsorb(DamageSource pSource, float pDamage) {
         if (!pSource.isBypassArmor()) {

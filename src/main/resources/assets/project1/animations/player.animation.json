@@ -27,25 +27,19 @@
 		},
 		"animation.player.new": {
 			"loop": true,
-			"animation_length": 3.5,
+			"animation_length": 1,
 			"bones": {
-				"LeftItem": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"3.5": {
-							"vector": [1925, 0, 0]
-						}
-					},
-					"position": {
-						"0.0": {
-							"vector": [0, 0, 9]
-						},
-						"3.5": {
-							"vector": [0, 0, -18]
-						}
-					}
+				"RightArm": {
+					"rotation": [-90, 0, 0]
+				},
+				"RightLowerArm": {
+					"rotation": [-37.5, 0, 0]
+				},
+				"LeftArm": {
+					"rotation": [-90, 0, 0]
+				},
+				"LeftLowerArm": {
+					"rotation": [-40, 0, 0]
 				}
 			}
 		},

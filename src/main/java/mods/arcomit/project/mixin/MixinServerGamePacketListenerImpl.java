@@ -44,7 +44,10 @@ public abstract class MixinServerGamePacketListenerImpl {
     @Shadow
     private ServerPlayer player;
 
-    //修改服务器网络包中攻击距离的判断
+    /**
+     * @author Arcomit
+     * 修改服务器网络包中攻击距离的判断
+     */
     @ModifyConstant(method = "handleInteract", constant = @Constant(doubleValue = 36.0D,ordinal = 1))
     public double reach(double constant) {
         double reach = player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();

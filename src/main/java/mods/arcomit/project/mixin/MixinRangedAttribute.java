@@ -22,16 +22,25 @@ public class MixinRangedAttribute {
     @Shadow
     private double maxValue;
 
+    /**
+     * @author Arcomit
+     */
     @Overwrite
     public double getMinValue() {
         return -999999;
     }
 
+    /**
+     * @author Arcomit
+     */
     @Overwrite
     public double getMaxValue() {
         return 999999;
     }
 
+    /**
+     * @author Arcomit
+     */
     @Overwrite
     public double sanitizeValue(double pValue) {
         return Mth.clamp(pValue, -999999, 999999);

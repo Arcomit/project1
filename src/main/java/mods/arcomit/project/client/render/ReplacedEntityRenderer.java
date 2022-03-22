@@ -20,6 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.PlayerModelPart;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
 import software.bernie.geckolib3.compat.PatchouliCompat;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -94,6 +95,10 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
         EntityModelData entityModelData = new EntityModelData();
         entityModelData.isSitting = shouldSit;
         entityModelData.isChild = entityLiving.isBaby();
+
+        if (entity.isCrouching()){
+            stack.translate(0F,0.125D,0);
+        }
 
         float f = Mth.rotLerp(partialTicks, entityLiving.yBodyRotO, entityLiving.yBodyRot);
         float f1 = Mth.rotLerp(partialTicks, entityLiving.yHeadRotO, entityLiving.yHeadRot);

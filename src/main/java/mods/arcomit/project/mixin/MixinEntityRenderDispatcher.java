@@ -45,6 +45,10 @@ public class MixinEntityRenderDispatcher implements IMixinEntityRenderDispatcher
     @Shadow
     public Map<EntityType<?>, EntityRenderer<?>> renderers;
 
+    /**
+     * @author Arcomit
+     * 用于获取context
+     */
     @Overwrite
     public void onResourceManagerReload(ResourceManager pResourceManager) {
         context = new EntityRendererProvider.Context((EntityRenderDispatcher) (Object) this, this.itemRenderer, pResourceManager, this.entityModels, this.font);

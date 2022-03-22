@@ -10,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -57,6 +58,7 @@ public class Combat {
             if (player.getMainHandItem().getItem() instanceof SwordChangeItem){
                 event.getEntityLiving().invulnerableTime = 1;
             }
+
         }
         /**需要写配置文件用于设置是否开启无敌帧(默认不开启)*/
     }

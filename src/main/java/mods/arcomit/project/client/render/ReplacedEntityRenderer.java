@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.ModList;
+import static org.lwjgl.opengl.GL11.*;
 import software.bernie.geckolib3.compat.PatchouliCompat;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.IAnimatableModel;
@@ -40,7 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author Arcomit
- * @Update 2022/03/19-Arcomit
+ * @Update 2022/03/24-Arcomit
  * 用与修改原版实体的渲染
  */
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -161,17 +163,21 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
         }
 
         stack.translate(0, 0.01f, 0);
+        stack.scale(0.9375F, 0.9375F, 0.9375F);
+
         RenderSystem.setShaderTexture(0, getTextureLocation(entity));
         Color renderColor = getRenderColor(animatable, partialTicks, stack, bufferIn, null, packedLightIn);
-        RenderType renderType = getRenderType(entity, partialTicks, stack, bufferIn, null, packedLightIn,
-                getTextureLocation(entity));
+        boolean spectator = entity.isSpectator();
+        RenderType renderType = this.getRenderType(entity,getTextureLocation(entity));
         boolean invis = entity.isInvisibleTo(Minecraft.getInstance().player);
+
+
         render(model, entity, partialTicks, renderType, stack, bufferIn, null, packedLightIn,
                 getPackedOverlay(entityLiving, this.getOverlayProgress(entityLiving, partialTicks)),
                 (float) renderColor.getRed() / 255f, (float) renderColor.getGreen() / 255f,
-                (float) renderColor.getBlue() / 255f, invis ? 0.0F : (float) renderColor.getAlpha() / 255);
+                (float) renderColor.getBlue() / 255f, invis ? 0F : (float) renderColor.getAlpha() / 255);
 
-        if (!entity.isSpectator()) {
+        if (!spectator) {
             for (GeoLayerRenderer layerRenderer : this.layerRenderers) {
                 layerRenderer.render(stack, bufferIn, packedLightIn, entity, limbSwing, limbSwingAmount, partialTicks,
                         f7, f2, f6);
@@ -297,7 +303,7 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
     }
 
     public ResourceLocation getModelLocation(Entity entity) {
-        return getModelLocation(animatable);
+        return getModelLocation(currentAnimatable);
     }
 
     public ResourceLocation getModelLocation(Object instance) {
@@ -306,5 +312,9 @@ public class ReplacedEntityRenderer <T extends IAnimatable> extends EntityRender
 
     public final boolean addLayer(GeoLayerRenderer<? extends LivingEntity> layer) {
         return this.layerRenderers.add(layer);
+    }
+
+    public RenderType getRenderType(Entity entity,ResourceLocation textureLocation){
+        return RenderType.entityCutout(textureLocation);
     }
 }

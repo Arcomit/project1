@@ -1,14 +1,12 @@
 package mods.arcomit.project.mixin;
 
-import mods.arcomit.project.IMixinEntityRenderDispatcher;
+import mods.arcomit.project.client.render.IMixinEntityRenderDispatcher;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import org.spongepowered.asm.mixin.*;
 
 import java.util.Map;

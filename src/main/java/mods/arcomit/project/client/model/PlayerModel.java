@@ -40,17 +40,18 @@ public class PlayerModel extends AnimatedGeoModel {
     @Override
     public void setLivingAnimations(Object entity, Integer uniqueID,AnimationEvent customPredicate) {
         super.setLivingAnimations((IAnimatable) entity,uniqueID,customPredicate);
-        IBone head = this.getAnimationProcessor().getBone("Head");
+        IBone head = this.getAnimationProcessor().getBone("HeadBone");
         //处理头部旋转
         EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
         head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
         head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
 
         //处理手部旋转
-        IBone rightArm = this.getAnimationProcessor().getBone("RightArm");
-        IBone leftArm = this.getAnimationProcessor().getBone("LeftArm");
-        rightArm.setRotationX(rightArm.getRotationX()+ extraData.headPitch * ((float) Math.PI / 180F));
-        leftArm.setRotationX(leftArm.getRotationX()+ extraData.headPitch * ((float) Math.PI / 180F));
+        IBone rightArm = this.getAnimationProcessor().getBone("RightArmBone");
+        IBone leftArm = this.getAnimationProcessor().getBone("LeftArmBone");
+        rightArm.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
+        leftArm.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
+
     }
 
 }

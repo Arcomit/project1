@@ -39,6 +39,8 @@ public class PlayerController implements IAnimatable {
         return PlayState.CONTINUE;
     }
 
+
+
     @Override
     public AnimationFactory getFactory() {
         return factory;

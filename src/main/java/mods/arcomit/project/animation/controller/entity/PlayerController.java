@@ -39,7 +39,15 @@ public class PlayerController implements IAnimatable {
         return PlayState.CONTINUE;
     }
 
+    private <P extends IAnimatable> PlayState predicate2(AnimationEvent<P> event) {
 
+        if (player.isCrouching()){
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.swinging", true));
+        }else {
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.new", true));
+        }
+        return PlayState.CONTINUE;
+    }
 
     @Override
     public AnimationFactory getFactory() {

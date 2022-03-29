@@ -55,8 +55,13 @@
 					]
 				},
 				{
-					"name": "RightArm",
+					"name": "RightArmBone",
 					"parent": "BodyUp",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "RightArm",
+					"parent": "RightArmBone",
 					"pivot": [-5, 22, 0]
 				},
 				{
@@ -286,8 +291,13 @@
 					"pivot": [-5.5, 13, -3]
 				},
 				{
-					"name": "LeftArm",
+					"name": "LeftArmBone",
 					"parent": "BodyUp",
+					"pivot": [6, 22, 0]
+				},
+				{
+					"name": "LeftArm",
+					"parent": "LeftArmBone",
 					"pivot": [6, 22, 0]
 				},
 				{
@@ -517,8 +527,13 @@
 					"pivot": [5.5, 13, -3]
 				},
 				{
-					"name": "Head",
+					"name": "HeadBone",
 					"parent": "BodyUp",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "Head",
+					"parent": "HeadBone",
 					"pivot": [0, 24, 0],
 					"cubes": [
 						{

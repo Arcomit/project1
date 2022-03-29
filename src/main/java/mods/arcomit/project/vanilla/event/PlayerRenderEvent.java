@@ -1,14 +1,11 @@
-package mods.arcomit.project.event;
+package mods.arcomit.project.vanilla.event;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
-import mods.arcomit.project.client.render.PlayerRender;
-import mods.arcomit.project.client.render.IMixinEntityRenderDispatcher;
+import mods.arcomit.project.animation.render.PlayerRender;
+import mods.arcomit.project.animation.render.IMixinEntityRenderDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.util.Mth;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -35,7 +32,6 @@ public class PlayerRenderEvent {
     public static ConcurrentHashMap<UUID, PlayerController> playerControllerHashMap = new ConcurrentHashMap(20);
 
 
-    private static boolean t = false;
     //修改玩家第三人称渲染
     @SubscribeEvent
     public static void playerRender(RenderPlayerEvent.Pre event){

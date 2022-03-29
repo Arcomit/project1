@@ -1,6 +1,6 @@
 package mods.arcomit.project.mixin;
 
-import mods.arcomit.project.client.render.IMixinEntityRenderDispatcher;
+import mods.arcomit.project.animation.render.IMixinEntityRenderDispatcher;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.*;

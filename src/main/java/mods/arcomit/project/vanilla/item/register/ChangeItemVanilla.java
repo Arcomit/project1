@@ -38,4 +38,5 @@ public class ChangeItemVanilla {
     public static final RegistryObject<Item> DIAMOND_SWORD = VANILLA_ITEMS.register("diamond_sword", () -> new SwordChangeItem(Tiers.DIAMOND, 2, 96,0, (new Item.Properties()).durability(2430).tab(CreativeModeTab.TAB_COMBAT)));
     //下届剑
     public static final RegistryObject<Item> NETHERITE_SWORD = VANILLA_ITEMS.register("netherite_sword", () -> new SwordChangeItem(Tiers.NETHERITE, 3, 96,1, (new Item.Properties()).durability(2710).tab(CreativeModeTab.TAB_COMBAT)));
+
 }

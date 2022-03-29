@@ -1,4 +1,4 @@
-package mods.arcomit.project.client.render;
+package mods.arcomit.project.animation.render;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;

@@ -1,4 +1,4 @@
-package mods.arcomit.project.client.render;
+package mods.arcomit.project.animation.render;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 

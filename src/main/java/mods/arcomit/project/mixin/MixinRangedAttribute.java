@@ -27,7 +27,7 @@ public class MixinRangedAttribute {
      */
     @Overwrite
     public double getMinValue() {
-        return -999999;
+        return Double.MIN_VALUE;
     }
 
     /**
@@ -35,7 +35,7 @@ public class MixinRangedAttribute {
      */
     @Overwrite
     public double getMaxValue() {
-        return 999999;
+        return Double.MAX_VALUE;
     }
 
     /**
@@ -43,6 +43,6 @@ public class MixinRangedAttribute {
      */
     @Overwrite
     public double sanitizeValue(double pValue) {
-        return Mth.clamp(pValue, -999999, 999999);
+        return Mth.clamp(pValue, getMinValue(), getMaxValue());
     }
 }

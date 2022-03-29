@@ -1,4 +1,4 @@
-package mods.arcomit.project.client.model;
+package mods.arcomit.project.animation.model;
 
 import mods.arcomit.project.Project1;
 import net.minecraft.client.Minecraft;

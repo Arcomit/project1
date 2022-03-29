@@ -10,7 +10,8 @@
     "MixinServerGamePacketListenerImpl"
   ],
   "client": [
-    "MixinEntityRenderDispatcher"
+    "MixinEntityRenderDispatcher",
+    "MixinWorldRender"
   ],
   "server": [],
   "minVersion": "0.8"

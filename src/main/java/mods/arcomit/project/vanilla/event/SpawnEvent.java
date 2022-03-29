@@ -39,7 +39,7 @@ public class SpawnEvent {
     @SubscribeEvent
     public static void worldLoad(WorldEvent.CreateSpawnPosition e) {
         if (e.getWorld() instanceof ServerLevel){
-            e.setCanceled(true);
+
             ServerLevel world = (ServerLevel) e.getWorld();
             ServerLevelData worldData = e.getSettings();
             WorldGenSettings genSettings = world.getServer().getWorldData().worldGenSettings();
@@ -49,46 +49,51 @@ public class SpawnEvent {
 
             //用于判断生物群系
             Predicate<Holder<Biome>> biomeResult = biomeHolder -> biomeHolder.is(Biomes.FOREST);
+            //寻找生物群系
+            Pair<BlockPos, Holder<Biome>> pair = world.findNearestBiome(biomeResult, pos, 9999999, 8);
+            if (pair != null){
+                e.setCanceled(true);
+                ChunkPos chunkpos = world.getChunk(pair.getFirst()).getPos();
+                int i = chunkgenerator.getSpawnHeight(world);
+                if (i < world.getMinBuildHeight()) {
+                    BlockPos blockpos = chunkpos.getWorldPosition();
+                    i = world.getHeight(Heightmap.Types.WORLD_SURFACE, blockpos.getX() + 8, blockpos.getZ() + 8);
+                }
 
-            Pair<BlockPos, Holder<Biome>> pair = world.findNearestBiome(biomeResult, pos, 99999, 8);
-            ChunkPos chunkpos = world.getChunk(pair.getFirst()).getPos();
-            int i = chunkgenerator.getSpawnHeight(world);
-            if (i < world.getMinBuildHeight()) {
-                BlockPos blockpos = chunkpos.getWorldPosition();
-                i = world.getHeight(Heightmap.Types.WORLD_SURFACE, blockpos.getX() + 8, blockpos.getZ() + 8);
-            }
+                //设置出生点
+                worldData.setSpawn(chunkpos.getWorldPosition().offset(8, i, 8), 0.0F);
+                int k1 = 0;
+                int j = 0;
+                int k = 0;
+                int l = -1;
+                int i1 = 5;
 
-            worldData.setSpawn(chunkpos.getWorldPosition().offset(8, i, 8), 0.0F);
-            int k1 = 0;
-            int j = 0;
-            int k = 0;
-            int l = -1;
-            int i1 = 5;
-
-            for(int j1 = 0; j1 < Mth.square(11); ++j1) {
-                if (k1 >= -5 && k1 <= 5 && j >= -5 && j <= 5) {
-                    BlockPos blockpos1 = PlayerRespawnLogic.getSpawnPosInChunk(world, new ChunkPos(chunkpos.x + k1, chunkpos.z + j));
-                    if (blockpos1 != null) {
-                        worldData.setSpawn(blockpos1, 0.0F);
-                        break;
+                for(int j1 = 0; j1 < Mth.square(11); ++j1) {
+                    if (k1 >= -5 && k1 <= 5 && j >= -5 && j <= 5) {
+                        BlockPos blockpos1 = PlayerRespawnLogic.getSpawnPosInChunk(world, new ChunkPos(chunkpos.x + k1, chunkpos.z + j));
+                        if (blockpos1 != null) {
+                            //设置出生点
+                            worldData.setSpawn(blockpos1, 0.0F);
+                            break;
+                        }
                     }
+
+                    if (k1 == j || k1 < 0 && k1 == -j || k1 > 0 && k1 == 1 - j) {
+                        int l1 = k;
+                        k = -l;
+                        l = l1;
+                    }
+
+                    k1 += k;
+                    j += l;
                 }
 
-                if (k1 == j || k1 < 0 && k1 == -j || k1 > 0 && k1 == 1 - j) {
-                    int l1 = k;
-                    k = -l;
-                    l = l1;
+                //奖励箱生成
+                if (genSettings.generateBonusChest()) {
+                    ConfiguredFeature<?, ?> configuredfeature = MiscOverworldFeatures.BONUS_CHEST.value();
+                    configuredfeature.place(world, chunkgenerator, world.random, new BlockPos(worldData.getXSpawn(), worldData.getYSpawn(), worldData.getZSpawn()));
                 }
-
-                k1 += k;
-                j += l;
             }
-
-            if (genSettings.generateBonusChest()) {
-                ConfiguredFeature<?, ?> configuredfeature = MiscOverworldFeatures.BONUS_CHEST.value();
-                configuredfeature.place(world, chunkgenerator, world.random, new BlockPos(worldData.getXSpawn(), worldData.getYSpawn(), worldData.getZSpawn()));
-            }
-
         }
     }
 }

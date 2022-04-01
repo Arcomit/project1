@@ -56,10 +56,6 @@ public class ReplacedLivingRenderer<T extends ReplacedLivingController> extends 
     private final T defaultController;
     //Layer层渲染 如:玩家的盔甲,玩家被射中时身上插的箭等
     protected final List<GeoLayerRenderer> layerRenderers = Lists.newArrayList();
-    //添加Layer层渲染
-    public final boolean addLayer(GeoLayerRenderer<? extends LivingEntity> layer) {
-        return this.layerRenderers.add(layer);
-    }
 
     //当前动画控制器
     private IAnimatable currentController;
@@ -198,12 +194,12 @@ public class ReplacedLivingRenderer<T extends ReplacedLivingController> extends 
         }
 
         //获取模型
-        GeoModel model = modelProvider.getModel(this.getModelLocation(livingEntity));
         ReplacedLivingAnimationEvent predicate = new ReplacedLivingAnimationEvent(controller, limbSwing, limbSwingAmount, partialTicks,Collections.singletonList(entityModelData));
-
+        GeoModel model = modelProvider.getModel(this.getModelLocation(livingEntity));
         if (modelProvider instanceof IAnimatableModel) {
             ((IAnimatableModel) modelProvider).setLivingAnimations(controller, this.getUniqueID(livingEntity), predicate);
         }
+        //GeoModel model = modelProvider.getModel(this.getModelLocation(livingEntity));
 
         matrixChange(matrix);
 
@@ -235,10 +231,6 @@ public class ReplacedLivingRenderer<T extends ReplacedLivingController> extends 
 
     public ItemStack mainHand;
     public ItemStack offHand;
-    public ItemStack helmet;
-    public ItemStack chestplate;
-    public ItemStack leggings;
-    public ItemStack boots;
     public MultiBufferSource rtb;
     public ResourceLocation whTexture;
     public LivingEntity living;
@@ -250,10 +242,6 @@ public class ReplacedLivingRenderer<T extends ReplacedLivingController> extends 
             this.living = (LivingEntity) animatable;
             this.mainHand = living.getItemBySlot(EquipmentSlot.MAINHAND);
             this.offHand = living.getItemBySlot(EquipmentSlot.OFFHAND);
-            this.helmet = living.getItemBySlot(EquipmentSlot.HEAD);
-            this.chestplate = living.getItemBySlot(EquipmentSlot.CHEST);
-            this.leggings = living.getItemBySlot(EquipmentSlot.LEGS);
-            this.boots = living.getItemBySlot(EquipmentSlot.FEET);
             this.rtb = renderTypeBuffer;
             this.whTexture = this.getTextureLocation(living);
         }
@@ -380,5 +368,10 @@ public class ReplacedLivingRenderer<T extends ReplacedLivingController> extends 
             b = true;
         }
         Minecraft.getInstance().getItemRenderer().renderStatic((LivingEntity)null, itemStack, type, b, stack, multiBufferSource, (Level)null, packedLightIn, packedOverlayIn, pSeed);
+    }
+
+    //添加Layer层渲染
+    public final boolean addLayer(GeoLayerRenderer<? extends LivingEntity> layer) {
+        return this.layerRenderers.add(layer);
     }
 }

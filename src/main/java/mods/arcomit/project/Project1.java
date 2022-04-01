@@ -1,11 +1,18 @@
 package mods.arcomit.project;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import mods.arcomit.project.client.config.ClientConfig;
 import mods.arcomit.project.registry.ItemRegistry;
 import mods.arcomit.project.vanilla.entity.register.ChangeEntityVanilla;
 import mods.arcomit.project.vanilla.event.PlayerRenderEvent;
 import mods.arcomit.project.vanilla.item.register.ChangeItemVanilla;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -27,18 +34,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Project1 {
     public static final String MODID = "project1";
 
-    public static ConcurrentHashMap<String, String> armorResourceLocationHashMap = new ConcurrentHashMap(20);
-
-
     public Project1(){
         //Geckolib动画库初始化
         GeckoLib.initialize();
 
-        //注册配置文件
+        //注册客户端配置文件
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_CONFIG);
-        //盔甲资源初始化
-        arrmorResourceInitialize();
-
 
         //MOD总线
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -52,13 +53,6 @@ public class Project1 {
 
         //将用于添加模组物品的ITEMS注册进MOD总线
         ItemRegistry.ITEMS.register(bus);
-    }
-
-    public void arrmorResourceInitialize(){
-        for (String string : ClientConfig.armorModel.get()){
-            StringTokenizer stringTokenizer = new StringTokenizer(string,"=");
-            armorResourceLocationHashMap.put(stringTokenizer.nextToken(),stringTokenizer.nextToken());
-        }
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

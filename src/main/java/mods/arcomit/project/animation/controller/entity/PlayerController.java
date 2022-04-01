@@ -36,7 +36,7 @@ public class PlayerController extends ReplacedLivingController{
         if (living.isCrouching()){
             event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.swinging", true));
         }else {
-            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.fc", true));
+            event.getController().setAnimation((new AnimationBuilder()).addAnimation("animation.player.walk", true));
         }
         return PlayState.CONTINUE;
     }

@@ -1,10 +1,15 @@
 package mods.arcomit.project.vanilla.event;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import mods.arcomit.project.Project1;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
 import mods.arcomit.project.animation.render.PlayerRender;
 import mods.arcomit.project.animation.render.IMixinEntityRenderDispatcher;
+import mods.arcomit.project.json.ArmorCustom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
@@ -12,8 +17,11 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static mods.arcomit.project.util.FileLoader.getResourceAsString;
 
 
 /**
@@ -30,7 +38,6 @@ public class PlayerRenderEvent {
 
     //用于储存玩家的动画控制器
     public static ConcurrentHashMap<UUID, PlayerController> playerControllerHashMap = new ConcurrentHashMap(20);
-
 
     //修改玩家第三人称渲染
     @SubscribeEvent

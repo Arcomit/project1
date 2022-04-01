@@ -8,8 +8,12 @@ import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
+import software.bernie.geckolib3.geo.exception.GeckoLibException;
+import software.bernie.geckolib3.geo.render.built.GeoBone;
+import software.bernie.geckolib3.geo.render.built.GeoModel;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
+import software.bernie.geckolib3.resource.GeckoLibCache;
 
 import javax.annotation.Nullable;
 
@@ -49,9 +53,7 @@ public class PlayerModel extends AnimatedGeoModel {
         //处理手部旋转
         IBone rightArm = this.getAnimationProcessor().getBone("RightArmBone");
         IBone leftArm = this.getAnimationProcessor().getBone("LeftArmBone");
-        rightArm.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
-        leftArm.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
+
 
     }
-
 }

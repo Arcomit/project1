@@ -2,6 +2,7 @@ package mods.arcomit.project.animation.controller.entity;
 
 import net.minecraft.world.entity.LivingEntity;
 import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.IAnimationTickable;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
@@ -13,9 +14,7 @@ public class ReplacedLivingController implements IAnimatable {
     }
 
     @Override
-    public void registerControllers(AnimationData data) {
-
-    }
+    public void registerControllers(AnimationData data) {}
 
     @Override
     public AnimationFactory getFactory() {

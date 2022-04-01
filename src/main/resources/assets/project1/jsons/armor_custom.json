@@ -1,0 +1,8 @@
+[
+  {
+    "itemName" : ["minecraft:diamond_leggings","minecraft:diamond_helmet","minecraft:diamond_boots","minecraft:diamond_chestplate"],
+    "modelResource" : "project1:geo/armors/diamond.geo.json",
+    "modelSlimResource" : "project1:geo/armors/diamond_slim.geo.json",
+    "textureResource" : "project1:textures/armors/diamond.png"
+  }
+]

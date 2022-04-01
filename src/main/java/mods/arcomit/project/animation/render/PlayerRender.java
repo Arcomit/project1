@@ -6,6 +6,7 @@ import com.mojang.math.Vector3f;
 import mods.arcomit.project.Project1;
 import mods.arcomit.project.animation.controller.entity.PlayerController;
 import mods.arcomit.project.animation.model.PlayerModel;
+import mods.arcomit.project.animation.render.layer.PlyaerArmorLayer;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
@@ -14,6 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.crafting.Ingredient;
+import org.lwjgl.system.CallbackI;
 import software.bernie.geckolib3.geo.render.built.GeoBone;
 import software.bernie.geckolib3.geo.render.built.GeoCube;
 import software.bernie.geckolib3.util.RenderUtils;
@@ -25,13 +28,14 @@ import software.bernie.geckolib3.util.RenderUtils;
  * 用与修改玩家渲染
  */
 public class PlayerRender extends ReplacedLivingRenderer {
-    private boolean firstPerson=false;
+    public boolean firstPerson=false;
     public PlayerRender(EntityRendererProvider.Context renderManager) {
         super(renderManager, new PlayerModel(), new PlayerController(null));
+        this.addLayer(new PlyaerArmorLayer(this));
     }
 
     public PlayerRender(EntityRendererProvider.Context renderManager,boolean firstPerson) {
-        super(renderManager, new PlayerModel(), new PlayerController(null));
+        this(renderManager);
         this.firstPerson = firstPerson;
     }
 
@@ -66,9 +70,11 @@ public class PlayerRender extends ReplacedLivingRenderer {
         RenderUtils.moveBackFromPivot(bone, stack);
 
         //渲染手上的物品
-        stack.pushPose();
-        renderItem(bone,stack,packedLightIn,packedOverlayIn);
-        stack.popPose();
+        if (bone.getName().equals("RightItem") || bone.getName().equals("LeftItem")){
+            stack.pushPose();
+            renderItem(bone,stack,packedLightIn,packedOverlayIn);
+            stack.popPose();
+        }
 
         bufferIn = rtb.getBuffer(getRenderType(living,whTexture));
 
@@ -88,19 +94,23 @@ public class PlayerRender extends ReplacedLivingRenderer {
 
     public void renderItem(GeoBone bone, PoseStack stack, int packedLightIn,
                            int packedOverlayIn){
-        if (bone.getName().equals("RightItem") || bone.getName().equals("LeftItem")){
-            stack.translate(bone.getPivotX() / 16, bone.getPivotY() / 16, bone.getPivotZ() / 16);
-            stack.mulPose(Vector3f.XP.rotationDegrees(-75));
-            if (bone.getName().equals("RightItem")){
-                this.renderStatic(mainHand, ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND,
-                        packedLightIn, packedOverlayIn, stack, this.rtb, 0);
-            }
-
-            if (bone.getName().equals("LeftItem")){
-                this.renderStatic(offHand, ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND,
-                        packedLightIn, packedOverlayIn, stack, this.rtb, 0);
-            }
+        stack.translate(bone.getPivotX() / 16, bone.getPivotY() / 16, bone.getPivotZ() / 16);
+        stack.mulPose(Vector3f.XP.rotationDegrees(-75));
+        if (bone.getName().equals("RightItem")){
+            this.renderStatic(mainHand, ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND,
+                    packedLightIn, packedOverlayIn, stack, this.rtb, 0);
         }
+
+        if (bone.getName().equals("LeftItem")){
+            this.renderStatic(offHand, ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND,
+                    packedLightIn, packedOverlayIn, stack, this.rtb, 0);
+        }
+    }
+
+    @Override
+    public void matrixChange(PoseStack matrix){
+        super.matrixChange(matrix);
+        matrix.scale(0.9135F,0.9135F,0.9135F);//Arcomit:缩小玩家模型使之与碰撞箱大小匹配
     }
 
 

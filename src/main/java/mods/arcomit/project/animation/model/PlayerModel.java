@@ -14,6 +14,7 @@ import software.bernie.geckolib3.geo.render.built.GeoModel;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 import software.bernie.geckolib3.resource.GeckoLibCache;
+import software.bernie.shadowed.eliotlash.molang.MolangParser;
 
 import javax.annotation.Nullable;
 

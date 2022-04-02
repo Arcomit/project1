@@ -236,24 +236,28 @@ public class PlayerRender extends ReplacedLivingRenderer {
                         if (getChildBone(chest,"ChestUp") != null){
                             renderBone(getChildBone(chest,"ChestUp"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("BodyMiddle")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(chestType);
                         if (getChildBone(chest,"ChestMiddle") != null){
                             renderBone(getChildBone(chest,"ChestMiddle"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("BodyDown")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(chestType);
                         if (getChildBone(chest,"ChestDown") != null){
                             renderBone(getChildBone(chest,"ChestDown"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("RightUpperArm")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(chestType);
                         if (getChildBone(chest,"ChestRightUpArm") != null){
                             renderBone(getChildBone(chest,"ChestRightUpArm"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("RightLowerArm")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(chestType);
@@ -266,12 +270,14 @@ public class PlayerRender extends ReplacedLivingRenderer {
                         if (getChildBone(chest,"ChestLeftUpperArm") != null){
                             renderBone(getChildBone(chest,"ChestLeftUpperArm"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("LeftLowerArm")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(chestType);
                         if (getChildBone(chest,"ChestLeftDownArm") != null){
                             renderBone(getChildBone(chest,"ChestLeftDownArm"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                 }
                 if (armorType == EquipmentSlot.LEGS){
@@ -290,24 +296,28 @@ public class PlayerRender extends ReplacedLivingRenderer {
                         if (getChildBone(chest,"LeggingsLeftUpLeg") != null){
                             renderBone(getChildBone(chest,"LeggingsLeftUpLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("LeftLowerLeg")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(legsType);
                         if (getChildBone(chest,"LeggingsLeftDownLeg") != null){
                             renderBone(getChildBone(chest,"LeggingsLeftDownLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("RightUpperLeg")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(legsType);
                         if (getChildBone(chest,"LeggingsRightUpLeg") != null){
                             renderBone(getChildBone(chest,"LeggingsRightUpLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("RighyLowerLeg")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(legsType);
                         if (getChildBone(chest,"LeggingsRightDownLeg") != null){
                             renderBone(getChildBone(chest,"LeggingsRightDownLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                 }
                 if (armorType == EquipmentSlot.FEET){
@@ -326,12 +336,14 @@ public class PlayerRender extends ReplacedLivingRenderer {
                         if (getChildBone(chest,"BootsLeftDownLeg") != null){
                             renderBone(getChildBone(chest,"BootsLeftDownLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                     if (bone.getName().equals("RighyLowerLeg")){
                         VertexConsumer vertexBuilder = rtb.getBuffer(legsType);
                         if (getChildBone(chest,"BootsRightDownLeg") != null){
                             renderBone(getChildBone(chest,"BootsRightDownLeg"),stack,vertexBuilder,light,packedOverlayIn,1,1,1,1);
                         }
+                        return;
                     }
                 }
 

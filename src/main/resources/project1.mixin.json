@@ -11,7 +11,9 @@
   ],
   "client": [
     "MixinEntityRenderDispatcher",
-    "MixinWorldRender"
+    "MixinWorldRender",
+    "MixinInput",
+    "MixinLocalPlayer"
   ],
   "server": [],
   "minVersion": "0.8"

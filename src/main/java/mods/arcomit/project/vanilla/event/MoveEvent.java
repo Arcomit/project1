@@ -2,6 +2,7 @@ package mods.arcomit.project.vanilla.event;
 
 import mods.arcomit.project.Project1;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
  */
 @Mod.EventBusSubscriber(modid = Project1.MODID)
 public class MoveEvent {
+
     @SubscribeEvent
     public static void updatePlayerMaxUpStep(LivingEvent.LivingUpdateEvent event){
         if (event.getEntityLiving() instanceof Player){

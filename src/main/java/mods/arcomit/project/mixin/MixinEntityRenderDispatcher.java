@@ -8,6 +8,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.*;
+import software.bernie.geckolib3.resource.ResourceListener;
 
 import java.util.Map;
 
@@ -54,5 +55,7 @@ public class MixinEntityRenderDispatcher implements IMixinEntityRenderDispatcher
         this.playerRenderers = EntityRenderers.createPlayerRenderers(context);
         net.minecraftforge.fml.ModLoader.get().postEvent(new net.minecraftforge.client.event.EntityRenderersEvent.AddLayers(renderers, playerRenderers));
     }
+
+
 
 }

@@ -4,6 +4,7 @@ import mods.arcomit.project.Project1;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import software.bernie.geckolib3.GeckoLib;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -36,7 +37,6 @@ public class PlayerModel extends AnimatedGeoModel {
     public ResourceLocation getTextureLocation(Object object) {
         return new ResourceLocation("minecraft", "textures/entity/steve.png");
     }
-
     @Override
     public ResourceLocation getAnimationFileLocation(Object animatable) {
         return new ResourceLocation(Project1.MODID, "animations/player.animation.json");
